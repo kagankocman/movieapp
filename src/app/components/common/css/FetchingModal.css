@@ -1,0 +1,16 @@
+.fetching-modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9); 
+    border-radius: 8px; 
+  }
+  
+  .fetching-modal-content p {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #333;
+  }
+  

@@ -1,0 +1,6 @@
+.app-background {
+  background-color: rgb(103, 100, 100);
+  min-height: 100vh;
+  color: white;
+  padding: 20px;
+}

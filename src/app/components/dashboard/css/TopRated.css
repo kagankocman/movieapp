@@ -1,0 +1,189 @@
+.cart-title {
+  padding: 1%;
+  color: #ffd700;
+  font-size: 28px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.movies-wrapper {
+  margin-top: 2%;
+  position: relative;
+  background-color: #777;
+}
+
+.movies-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 10px;
+  flex-grow: 1;
+  scrollbar-width: thin;
+  scrollbar-color: #ffd700 #333;
+}
+
+.movies-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.movies-container::-webkit-scrollbar-thumb {
+  background-color: #ffd700;
+  border-radius: 10px;
+}
+
+.movies-container::-webkit-scrollbar-track {
+  background-color: #333;
+}
+
+.scroll-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #ffd700;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  z-index: 10;
+}
+
+.scroll-button.left {
+  left: 10px;
+}
+
+.scroll-button.right {
+  right: 10px;
+}
+
+.scroll-button:hover {
+  background-color: #ff5733;
+}
+
+.movie-card {
+  flex: 0 0 auto;
+  width: 170px;
+  height: 320px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.movie-poster {
+  width: 100%;
+  height: 220px;
+}
+
+.movie-info {
+  padding: 10px;
+}
+
+.movie-title {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.movie-title:hover {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.movie-year {
+  font-size: 12px;
+  color: #777;
+}
+
+.scroll-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #ffd700;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  z-index: 10;
+}
+
+.scroll-button.left {
+  left: 10px;
+}
+
+.scroll-button.right {
+  right: 10px;
+}
+
+.scroll-button:hover {
+  background-color: #ff5733;
+}
+
+.pagination-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination-button {
+  background-color: #ff5733;
+  color: #ffd700;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin: 0 10px 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.pagination-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.current-page {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 10px;
+  color: #ffd700;
+}
+
+.watch-later {
+  position: absolute;
+  color: #ff5733;
+  bottom: 5px;
+  right: 5px;
+  width: 24px;
+  height: 24px;
+}
+
+.watch-later:hover {
+  cursor: pointer;
+}
+
+.spinner-overlay-local {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}

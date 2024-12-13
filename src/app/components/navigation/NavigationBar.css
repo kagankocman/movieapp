@@ -1,0 +1,30 @@
+.navbar-custom {
+  background-color: rgb(86, 84, 84);
+  border-bottom: 2px solid #c82828;
+}
+
+.navbar-custom .nav-link {
+  color: #ffd700;
+  font-size: 1.5rem;
+  text-align: right;
+}
+
+.navbar-custom .navbar-brand {
+  margin-right: auto;
+}
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .nav-link:hover {
+  color: #ff5733;
+}
+
+.navbar-custom .dropdown-item {
+  font-size: 1.2rem;
+}
+
+.navbar-custom .navbar-title {
+  font-size: 2rem;
+  color: #ffd700;
+  font-weight: bold;
+  margin-right: auto;
+  margin-left: 1rem;
+}
