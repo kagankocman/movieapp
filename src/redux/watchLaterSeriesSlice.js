@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const wlseries = JSON.parse(localStorage.getItem("wlseries"));
 
 const initialState = {
-  series: wlseries || [],
+  series: wlseries || {},
 };
 
 const watchLaterSeriesSlice = createSlice({
@@ -10,21 +10,19 @@ const watchLaterSeriesSlice = createSlice({
   initialState,
   reducers: {
     addWatchLaterSeries: (state, action) => {
-      const exists = state.series.some((item) => item.id === action.payload.id);
+      const exists = !!state.series[action.payload.id]
       if (!exists) {
-        state.series.push(action.payload);
+        state.series[action.payload.id] = action.payload
         localStorage.setItem("wlseries", JSON.stringify(state.series));
       }
     },
     deleteWatchLaterSeries: (state, action) => {
-      state.series = state.series.filter(
-        (item) => item.id !== action.payload.id
-      );
+      delete state.series[action.payload.id]
       localStorage.setItem("wlseries", JSON.stringify(state.series));
     },
     clearWatchLaterSeries: (state) => {
-      state.series = [];
-      localStorage.setItem("wlseries", JSON.stringify([]));
+      state.series = {};
+      localStorage.setItem("wlseries", JSON.stringify({}));
     },
   },
 });

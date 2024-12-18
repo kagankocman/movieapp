@@ -2,7 +2,7 @@ import React from "react";
 import SeriesSearch from "./SeriesSearch";
 import SeriesTable from "./SeriesTable";
 import SeriesPagination from "./SeriesPagination";
-import SerieDetails from "./SerieDetails";
+import ItemDetails from "../common/ItemDetails";
 
 function Series() {
   return (
@@ -10,7 +10,7 @@ function Series() {
       <SeriesSearch />
       <SeriesTable />
       <SeriesPagination />
-      <SerieDetails/>
+      <ItemDetails type={2} />
     </>
   );
 }

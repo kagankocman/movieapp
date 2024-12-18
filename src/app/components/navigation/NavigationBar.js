@@ -8,10 +8,21 @@ import "./NavigationBar.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Tooltip } from "react-tooltip";
+import { createSelector } from "reselect";
+
+const selectWatchLaterMovies = createSelector(
+  (state) => state.wlMovies.movies,
+  (movies) => Object.values(movies)
+);
+
+const selectWatchLaterSeries = createSelector(
+  (state) => state.wlSeries.series,
+  (series) => Object.values(series)
+);
 
 function NavigationBar() {
-  const wlmovies = useSelector((state) => Object.values(state.wlMovies.movies));
-  const wlseries = useSelector((state) => state.wlSeries.series);
+  const wlmovies = useSelector(selectWatchLaterMovies);
+  const wlseries = useSelector(selectWatchLaterSeries);
   return (
     <Navbar expand="lg" className="navbar-custom">
       <Container>

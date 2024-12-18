@@ -35,15 +35,27 @@ export const getAllApi = createApi({
       query: ({ id }) => `tv/${id}?api_key=${API_KEY}`,
     }),
     getTopRatedMovies: builder.query({
-      query: ( page = 1 ) =>
-        `movie/top_rated?api_key=${API_KEY}&page=${page}`,
+      query: (page = 1) => `movie/top_rated?api_key=${API_KEY}&page=${page}`,
     }),
     getTopRatedSeries: builder.query({
-      query: ( page = 1 ) =>
-        `tv/top_rated?api_key=${API_KEY}&page=${page}`,
+      query: (page = 1) => `tv/top_rated?api_key=${API_KEY}&page=${page}`,
+    }),
+    getTrendingMovies: builder.query({
+      query: (page = 1) => `trending/movie/day?api_key=${API_KEY}&page=${page}`,
+    }),
+    getTrendingSeries: builder.query({
+      query: (page = 1) => `trending/tv/day?api_key=${API_KEY}&page=${page}`,
     }),
   }),
 });
 
-export const { useGetMoviesQuery, useGetSeriesQuery, useGetMovieQuery, useGetSerieQuery, useGetTopRatedMoviesQuery, useGetTopRatedSeriesQuery } =
-  getAllApi;
+export const {
+  useGetMoviesQuery,
+  useGetSeriesQuery,
+  useGetMovieQuery,
+  useGetSerieQuery,
+  useGetTopRatedMoviesQuery,
+  useGetTopRatedSeriesQuery,
+  useGetTrendingMoviesQuery,
+  useGetTrendingSeriesQuery,
+} = getAllApi;

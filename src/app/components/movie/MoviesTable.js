@@ -100,13 +100,13 @@ function MoviesTable() {
                   onClick={() => handleWatchLater(movie)}
                 >
                   +
+                  <Tooltip
+                    id={`delete-tooltip-${movie.id}`}
+                    place="left-start"
+                    content="Add to Watch later"
+                    variant="dark"
+                  />
                 </td>
-                <Tooltip
-                  id={`delete-tooltip-${movie.id}`}
-                  place="left-start"
-                  content="Add to Watch later"
-                  variant="dark"
-                />
               </tr>
             ))}
           </tbody>

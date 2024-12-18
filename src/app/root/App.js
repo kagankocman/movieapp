@@ -2,12 +2,12 @@ import React from "react";
 import Navi from "../components/navigation/NavigationBar";
 import { Container } from "reactstrap";
 import "./App.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import NotFound from "../components/common/src/NotFound";
+import { Route, Routes } from "react-router-dom";
+import NotFound from "../components/common/NotFound";
 import Movies from "../components/movie/Movies";
-import Dashboard from "../components/dashboard/src/Dashboard";
+import Dashboard from "../components/dashboard/Dashboard";
 import Series from "../components/serie/Series";
-import WatchLater from "../components/watchlater/src/WatchLater";
+import WatchLater from "../components/watchlater/WatchLater";
 
 function App() {
   return (

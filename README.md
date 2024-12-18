@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+# kMDB
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A web application that allows users to explore movies, view top-rated and popular films, and save their favorites to a "Watch Later" list. Built using **React**, **Redux Toolkit**, and **RTK Query**.
 
-## Available Scripts
+## Features
+- 🎬 View Top Rated Movies and Series
+- 🔍 Search for movies
+- ♾️ Infinite scrolling for seamless browsing
+- 💾 Save a "Watch Later" list using localStorage
+- Responsive design
 
-In the project directory, you can run:
+## Installation
 
-### `npm start`
+Follow these steps to set up the project:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. **Clone the repository**  
+   Clone the project to your local machine:
+   ```bash
+   git clone https://github.com/kagankocman/movieapp.git
+   ```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. **Navigate to the project directory**  
+   Change your working directory to the cloned project:
+   ```bash
+   cd movieapp
+   ```
 
-### `npm test`
+3. **Install dependencies**  
+   Install the required packages:
+   ```bash
+   npm install
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+4. **Obtain a TMDB API user token**  
+   - Go to the [TMDB API](https://www.themoviedb.org/documentation/api).
+   - Create an account or log in if you already have one.
+   - Generate a **user access token** by following the instructions provided in the TMDB API documentation.
 
-### `npm run build`
+5. **Create a `.env` file**  
+   - In the root directory of the project, create a file named `.env`.
+   - Add the following line to the file, replacing `your_token_here` with your TMDB user token:
+     ```bash
+     REACT_APP_TMDB_TOKEN=your_token_here
+     ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+6. **Start the application**  
+   Run the following command to start the development server:
+   ```bash
+   npm start
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Your application should now be up and running at `http://localhost:3000`. Open your browser and explore the features!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Usage
+- When the application starts, you'll be directed to the **"Dashboard"** section.
+- Use the infinite scroll feature to load more movies.
+- Use the search bar in the top right corner to find specific movies.
+- Save your favorite movies to the "Watch Later" list, which is stored in your browser's localStorage.
 
-### `npm run eject`
+## Contributing
+Contributions are welcome! Please fork the repository and submit a pull request with your changes.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Screenshots
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Dashboard](screenshots/dashboard.png "Dashboard View")
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+![DetailModal](screenshots/detailmodal.png "Detail Modal View")
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![SearchMovie](screenshots/searchmovie.png "Search Movie View")
 
-## Learn More
+![SearchSerie](screenshots/searchserie.png "Search Serie View")
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![Watchlater](screenshots/watchlater.png "Watchlater List View")

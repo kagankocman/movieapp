@@ -1,48 +1,48 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useGetTopRatedMoviesQuery } from "../../../../api/apiSlice.js";
-import "../css/TopRated.css";
+import { useGetTrendingSeriesQuery } from "../../../api/apiSlice.js";
+import "./css/TopRated.css";
 import { Spinner } from "reactstrap";
 import { Tooltip } from "react-tooltip";
 import { useSelector, useDispatch } from "react-redux";
-import { addMovies } from "../../../../redux/topRatedMoviesSlice.js";
-import { setSelectedMovie } from "../../../../redux/movieSlice.js";
+import { addSeries } from "../../../redux/trendingSeriesSlice.js";
+import { setSelectedSerie } from "../../../redux/serieSlice.js";
 import { FixedSizeList } from "react-window";
-import posterNotFound from "../../../../assets/no-image.jpg";
-import watchLaterImg from "../../../../assets/watchlater.png";
-import { addWatchLaterMovies } from "../../../../redux/watchLaterMoviesSlice.js";
+import posterNotFound from "../../../assets/no-image.jpg";
+import watchLaterImg from "../../../assets/watchlater.png";
+import { addWatchLaterSeries } from "../../../redux/watchLaterSeriesSlice.js";
 import alertify from "alertifyjs";
 
-function TopRatedMovies() {
+function TrendingSeries() {
   const [currentPage, setCurrentPage] = useState(1);
   const [isAtStart, setIsAtStart] = useState(true);
   const [isAtEnd, setIsAtEnd] = useState(false);
-  const topRatedMovies = useSelector((state) => state.topRatedMovies.movies);
+  const trendingSeries = useSelector((state) => state.trendingSeries.series);
   const dispatch = useDispatch();
-  const { data, error, isFetching } = useGetTopRatedMoviesQuery(currentPage);
+  const { data, error, isFetching } = useGetTrendingSeriesQuery(currentPage);
   const listRef = useRef(null);
 
   useEffect(() => {
     if (data?.results) {
-      dispatch(addMovies(data.results));
+      dispatch(addSeries(data.results));
     }
   }, [data, dispatch]);
 
   const handleItemsRendered = ({ visibleStartIndex, visibleStopIndex }) => {
-    if (!isFetching && visibleStopIndex >= topRatedMovies.length - 2) {
+    if (!isFetching && visibleStopIndex >= trendingSeries.length - 2) {
       setCurrentPage((prevPage) => prevPage + 1);
     }
     setIsAtStart(visibleStartIndex === 0);
-    setIsAtEnd(visibleStopIndex >= topRatedMovies.length - 1);
+    setIsAtEnd(visibleStopIndex >= trendingSeries.length - 1);
 
-    if (visibleStopIndex >= topRatedMovies.length - 2 && !isFetching) {
+    if (visibleStopIndex >= trendingSeries.length - 2 && !isFetching) {
       setCurrentPage((prevPage) => prevPage + 1);
     }
   };
 
   const handleWatchLater = (movie) => {
-    dispatch(addWatchLaterMovies(movie));
-    alertify.set("notifier", "position", "top-center");
-    alertify.success(movie.title + " added to Watch later list.", 3);
+    dispatch(addWatchLaterSeries(movie));
+    alertify.set('notifier','position', 'top-center');
+    alertify.success(movie.name + " added to Watch later list.", 3);
   };
 
   const scrollRight = () => {
@@ -67,30 +67,30 @@ function TopRatedMovies() {
     }
   };
 
-  const MovieCard = ({ index, style }) => {
-    const movie = topRatedMovies[index];
-    if (!movie) return null;
+  const SerieCard = ({ index, style }) => {
+    const serie = trendingSeries[index];
+    if (!serie) return null;
 
     return (
       <div style={{ ...style, width: 170, height: 320 }} className="movie-card">
         <img
           src={
-            movie.poster_path
-              ? `https://image.tmdb.org/t/p/w200${movie.poster_path}`
+            serie.poster_path
+              ? `https://image.tmdb.org/t/p/w200${serie.poster_path}`
               : posterNotFound
           }
-          alt={movie.title}
+          alt={serie.title}
           className="movie-poster"
         />
         <img
-          onClick={() => handleWatchLater(movie)}
+          onClick={() => handleWatchLater(serie)}
           alt="+"
           src={watchLaterImg}
           className="watch-later"
-          data-tooltip-id={`delete-tooltip-${movie.id}`}
+          data-tooltip-id={`delete-tooltip-${serie.id}`}
         ></img>
         <Tooltip
-          id={`delete-tooltip-${movie.id}`}
+          id={`delete-tooltip-${serie.id}`}
           place="left"
           content="Add to Watch later"
           variant="dark"
@@ -98,18 +98,18 @@ function TopRatedMovies() {
         <div className="movie-info">
           <h3
             className="movie-title"
-            onClick={() => dispatch(setSelectedMovie({ id: movie.id }))}
-            data-tooltip-id={`details-tooltip-${movie.id}`}
+            onClick={() => dispatch(setSelectedSerie({ id: serie.id }))}
+            data-tooltip-id={`details-tooltip-${serie.id}`}
           >
-            {movie.title}
+            {serie.name}
           </h3>
           <Tooltip
-            id={`details-tooltip-${movie.id}`}
-            place="bottom"
-            content="More info"
-            variant="info"
-          />
-          <p className="movie-year">{movie.vote_average.toFixed(1)}</p>
+          id={`details-tooltip-${serie.id}`}
+          place="bottom"
+          content="More info"
+          variant="info"
+        />
+          <p className="movie-year">{serie.vote_average.toFixed(1)}</p>
         </div>
       </div>
     );
@@ -135,7 +135,7 @@ function TopRatedMovies() {
 
   return (
     <div className="movies-wrapper">
-      <h2 className="cart-title">Top Rated Movies</h2>
+      <h2 className="cart-title">Trending Series</h2>
       {!isAtStart && (
         <button className="scroll-button left" onClick={scrollLeft}>
           &lt;
@@ -153,12 +153,12 @@ function TopRatedMovies() {
           width={window.innerWidth - 40}
           itemSize={190}
           itemCount={
-            isFetching ? topRatedMovies.length + 2 : topRatedMovies.length
+            isFetching ? trendingSeries.length + 2 : trendingSeries.length
           }
           layout="horizontal"
           onItemsRendered={handleItemsRendered}
         >
-          {MovieCard}
+          {SerieCard}
         </FixedSizeList>
         {isFetching && (
           <div className="spinner-overlay-local">
@@ -184,4 +184,4 @@ function TopRatedMovies() {
   );
 }
 
-export default TopRatedMovies;
+export default TrendingSeries;

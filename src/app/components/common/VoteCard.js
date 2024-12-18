@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/VoteCard.css";
+import "./css/VoteCard.css";
 
 const VoteCard = ({ voteAverage, voteCount }) => {
   const circleStyle = {

@@ -1,6 +1,6 @@
 import React from "react";
 import { Spinner } from "reactstrap";
-import "../css/FetchingModal.css";
+import "./css/FetchingModal.css";
 
 const FetchingModal = ({ isFetching }) => {
   return (

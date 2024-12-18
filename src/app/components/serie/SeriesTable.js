@@ -100,12 +100,12 @@ function SeriesTable() {
                   onClick={() => handleWatchLater(serie)}
                 >
                   +
+                  <Tooltip
+                    id={`delete-tooltip-${serie.id}`}
+                    place="left-start"
+                    content="Add to Watch later"
+                  />
                 </td>
-                <Tooltip
-                  id={`delete-tooltip-${serie.id}`}
-                  place="left-start"
-                  content="Add to Watch later"
-                />
               </tr>
             ))}
           </tbody>

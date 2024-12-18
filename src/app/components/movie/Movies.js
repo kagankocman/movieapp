@@ -2,7 +2,7 @@ import React from "react";
 import MoviesSearch from "./MoviesSearch";
 import MoviesPagination from "./MoviesPagination";
 import MoviesTable from "./MoviesTable";
-import MovieDetails from "./MovieDetails";
+import ItemDetails from "../common/ItemDetails";
 
 function Movies() {
   return (
@@ -10,7 +10,7 @@ function Movies() {
       <MoviesSearch />
       <MoviesTable />
       <MoviesPagination />
-      <MovieDetails />
+      <ItemDetails type={1} />
     </>
   );
 }

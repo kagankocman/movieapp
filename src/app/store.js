@@ -8,6 +8,8 @@ import topRatedMoviesReducer from "../redux/topRatedMoviesSlice";
 import topRatedSeriesReducer from "../redux/topRatedSeriesSlice";
 import watchLaterMoviesReducer from "../redux/watchLaterMoviesSlice";
 import watchLaterSeriesReducer from "../redux/watchLaterSeriesSlice";
+import trendingMoviesReducer from "../redux/trendingMoviesSlice";
+import trendingSeriesReducer from "../redux/trendingSeriesSlice";
 
 export const store = configureStore({
   reducer: {
@@ -20,6 +22,8 @@ export const store = configureStore({
     topRatedSeries: topRatedSeriesReducer,
     wlMovies: watchLaterMoviesReducer,
     wlSeries: watchLaterSeriesReducer,
+    trendingMovies: trendingMoviesReducer,
+    trendingSeries: trendingSeriesReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(getAllApi.middleware),

@@ -1,22 +1,28 @@
 import React, { useState, useRef } from "react";
-import "../css/WatchLater.css";
+import "./css/WatchLater.css";
 import { useSelector, useDispatch } from "react-redux";
-import { setSelectedSerie } from "../../../../redux/serieSlice.js";
+import { setSelectedMovie } from "../../../redux/movieSlice";
 import { FixedSizeList } from "react-window";
-import posterNotFound from "../../../../assets/no-image.jpg";
-import deleteImg from "../../../../assets/delete.png";
-import removeImg from "../../../../assets/remove.png";
+import posterNotFound from "./../../../assets/no-image.jpg";
+import deleteImg from "./../../../assets/delete.png";
+import removeImg from "./../../../assets/remove.png";
 import alertify from "alertifyjs";
 import {
-  deleteWatchLaterSeries,
-  clearWatchLaterSeries,
-} from "../../../../redux/watchLaterSeriesSlice.js";
+  deleteWatchLaterMovies,
+  clearWatchLaterMovies,
+} from "../../../redux/watchLaterMoviesSlice.js";
 import { Tooltip } from "react-tooltip";
+import { createSelector } from "reselect";
 
-function WatchLaterSeries() {
+const selectWatchLaterMovies = createSelector(
+  (state) => state.wlMovies.movies,
+  (movies) => Object.values(movies)
+);
+
+function WatchLaterMovies() {
   const [isAtStart, setIsAtStart] = useState(true);
   const [isAtEnd, setIsAtEnd] = useState(false);
-  const wlSeries = useSelector((state) => state.wlSeries.series);
+  const wlMovies = useSelector(selectWatchLaterMovies);
   const dispatch = useDispatch();
   const listRef = useRef(null);
 
@@ -43,24 +49,24 @@ function WatchLaterSeries() {
   };
 
   const handleDeleteWatchLater = (movie) => {
-    dispatch(deleteWatchLaterSeries(movie));
+    dispatch(deleteWatchLaterMovies(movie));
     alertify.set("notifier", "position", "top-center");
-    alertify.success(movie.name + " removed from Watch later list.", 3);
+    alertify.success(movie.title + " removed from Watch later list.", 3);
   };
 
   const handleClearWatchLater = () => {
-    dispatch(clearWatchLaterSeries());
+    dispatch(clearWatchLaterMovies());
     alertify.set("notifier", "position", "top-center");
     alertify.success("All list items are cleared.", 3);
   };
 
   const handleItemsRendered = ({ visibleStartIndex, visibleStopIndex }) => {
     setIsAtStart(visibleStartIndex === 0);
-    setIsAtEnd(visibleStopIndex >= wlSeries.length - 1);
+    setIsAtEnd(visibleStopIndex >= wlMovies.length - 1);
   };
 
   const MovieCard = ({ index, style }) => {
-    const movie = wlSeries[index];
+    const movie = wlMovies[index];
     if (!movie) return null;
 
     return (
@@ -71,16 +77,16 @@ function WatchLaterSeries() {
               ? `https://image.tmdb.org/t/p/w200${movie.poster_path}`
               : posterNotFound
           }
-          alt={movie.name}
+          alt={movie.title}
           className="movie-poster"
         />
         <img
           onClick={() => handleDeleteWatchLater(movie)}
-          alt="+"
+          alt="Delete"
           src={deleteImg}
           className="watch-later"
           data-tooltip-id={`delete-tooltip-${movie.id}`}
-        ></img>
+        />
         <Tooltip
           id={`delete-tooltip-${movie.id}`}
           place="top"
@@ -90,10 +96,10 @@ function WatchLaterSeries() {
         <div className="movie-info">
           <h3
             className="movie-title"
-            onClick={() => dispatch(setSelectedSerie({ id: movie.id }))}
+            onClick={() => dispatch(setSelectedMovie({ id: movie.id }))}
             data-tooltip-id={`details-tooltip-${movie.id}`}
           >
-            {movie.name}
+            {movie.title}
           </h3>
           <Tooltip
             id={`details-tooltip-${movie.id}`}
@@ -116,7 +122,7 @@ function WatchLaterSeries() {
           alignItems: "center",
         }}
       >
-        <h2 className="cart-title">Watch Later Series</h2>
+        <h2 className="cart-title">Watch Later Movies</h2>
         <img
           onClick={() => handleClearWatchLater()}
           alt="-"
@@ -131,7 +137,7 @@ function WatchLaterSeries() {
           variant="error"
         />
       </div>
-      {wlSeries.length === 0 ? (
+      {wlMovies.length === 0 ? (
         <p className="empty">Empty list. What about surfing in the site?</p>
       ) : (
         <>
@@ -146,7 +152,7 @@ function WatchLaterSeries() {
               height={340}
               width={window.innerWidth - 40}
               itemSize={190}
-              itemCount={wlSeries.length}
+              itemCount={wlMovies.length}
               layout="horizontal"
               onItemsRendered={handleItemsRendered}
             >
@@ -164,4 +170,4 @@ function WatchLaterSeries() {
   );
 }
 
-export default WatchLaterSeries;
+export default WatchLaterMovies;

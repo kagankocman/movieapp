@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useGetTopRatedSeriesQuery } from "../../../../api/apiSlice.js";
-import "../css/TopRated.css";
+import { useGetTopRatedSeriesQuery } from "../../../api/apiSlice.js";
+import "./css/TopRated.css";
 import { Spinner } from "reactstrap";
 import { Tooltip } from "react-tooltip";
 import { useSelector, useDispatch } from "react-redux";
-import { addSeries } from "../../../../redux/topRatedSeriesSlice.js";
-import { setSelectedSerie } from "../../../../redux/serieSlice.js";
+import { addSeries } from "../../../redux/topRatedSeriesSlice.js";
+import { setSelectedSerie } from "../../../redux/serieSlice.js";
 import { FixedSizeList } from "react-window";
-import posterNotFound from "../../../../assets/no-image.jpg";
-import watchLaterImg from "../../../../assets/watchlater.png";
-import { addWatchLaterSeries } from "../../../../redux/watchLaterSeriesSlice.js";
+import posterNotFound from "../../../assets/no-image.jpg";
+import watchLaterImg from "../../../assets/watchlater.png";
+import { addWatchLaterSeries } from "../../../redux/watchLaterSeriesSlice.js";
 import alertify from "alertifyjs";
 
 function TopRatedSeries() {

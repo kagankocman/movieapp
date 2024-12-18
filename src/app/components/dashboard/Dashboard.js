@@ -1,16 +1,19 @@
 import React from "react";
 import TopRatedMovies from "./TopRatedMovies";
 import TopRatedSeries from "./TopRatedSeries";
-import MovieDetails from "../../movie/MovieDetails";
-import SerieDetails from "../../serie/SerieDetails";
+import ItemDetails from "../common/ItemDetails";
+import TrendingMovies from "./TrendingMovies";
+import TrendingSeries from "./TrendingSeries";
 
 function Dashboard() {
   return (
     <>
       <TopRatedMovies />
+      <TrendingMovies />
       <TopRatedSeries />
-      <MovieDetails />
-      <SerieDetails />
+      <TrendingSeries />
+      <ItemDetails type={1} />
+      <ItemDetails type={2} />
     </>
   );
 }
